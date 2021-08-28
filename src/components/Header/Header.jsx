@@ -36,14 +36,17 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "space-between",
   },
+  content:{
+    paddingBottom: "20px",
+    // width: "80%"
+  }
 });
 
 const Header = (props) => {
   const classes = useStyles();
   const [name, setName] = useState("");
   return (
-    <div>
-      {props.isCardShown ? <ShowMoreCard index={props.index} /> : null}
+    <div className={classes.content}>
       <form className={classes.header} onSubmit={(e) => {}}>
         <div
           style={{
@@ -136,7 +139,7 @@ const Header = (props) => {
           <ResultSource />
         </div>
       )}
-    </div>
+    </div >
   );
 };
 

@@ -7,8 +7,8 @@ import { MoreHoriz } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   card: {
-    width: "368px",
-    height: "368px",
+    width: "362px",
+    height: "408px",
     backgroundColor: "white",
     borderRadius: "16px",
     padding: "16px",
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     marginTop: "16px",
   },
   description: {
-    fontSize: "14px",
+    fontSize: "12px",
     marginTop: "16px",
   },
   contacts: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     alignContent: "flex-start",
     alignItems: "start",
-    marginTop: "16px",
+    marginTop: "4px",
     paddingRight: "20px",
     rowGap: "8px",
   },
@@ -67,11 +67,20 @@ const useStyles = makeStyles({
     fontSize: "16px",
     color: "#999999",
   },
+  p:{
+    marginTop:"16px",
+    marginBottom:"5px",
+    fontWeight:"bold",
+  },
+  a:{
+    textDecoration:"none",
+    color:"black",
+  }
 });
 
 const ResultCard = (props) => {
   const classes = useStyles();
-  console.log(props)
+  console.log(props);
   return (
     <div className={classes.card}>
       <div className={classes.topCard}>
@@ -80,14 +89,15 @@ const ResultCard = (props) => {
           size="small"
           className={classes.moreButton}
           // onClick={
-            // props.cardShown(props.index)
+          // props.cardShown(props.index)
           // }
         >
           <MoreHoriz className={classes.horiz} />
         </Button>
       </div>
+      <a className={classes.a} href={props?.card?.link}>
       <div className={classes?.logoTitle}>
-        <div>
+        {/* <div>
           <img
             className={classes.logo}
             alt={props?.card?.name}
@@ -97,15 +107,26 @@ const ResultCard = (props) => {
                 : props.card?.logo
             }
           />
+        </div> */}
+        
+        <div className={classes.title}>
+          {props?.card?.name}
         </div>
-        <div className={classes.title}>{props?.card?.name}</div>
       </div>
+      <p className={classes.p}>Описание:</p>
       <div className={classes.contacts}>
+        {props?.card?.text}
+      </div>
+      {/* <p className={classes.p}>Владельцы:</p>
+      <div className={classes.contacts}>
+        {props?.card?.["patent holders"]}
+      </div> */}
+      {/* <div className={classes.contacts}>
         {props?.card?.contacts ? props?.card?.contacts?.map((c, index) => (
           <Stat title={c?.type} link={c?.link} data={c?.value} />
         )) : null}
-      </div>
-      {props.card?.description?.map(
+      </div> */}
+      {/* {props.card?.description?.map(
         (d, index) =>
           index < 1 && (
             <div
@@ -115,8 +136,10 @@ const ResultCard = (props) => {
               }}
             />
           )
-      )}
+      )} */}
+      </a>
     </div>
+    
   );
 };
 
