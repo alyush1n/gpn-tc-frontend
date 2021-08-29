@@ -1,5 +1,5 @@
 # Клиентская часть интеллектуального поиска для компании Газпром-нефть
-[Backend-репозиторий](https://github.com/semyon_dev/gpn-tc-backend)
+[Backend-репозиторий](https://github.com/semyon-dev/gpn-tc-backend)
 
 ## Как установить?
 
