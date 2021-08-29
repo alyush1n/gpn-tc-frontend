@@ -20,11 +20,13 @@ export default function Category(props) {
         <InputLabel htmlFor="outlined-age-native-simple">
           {props.name}
         </InputLabel>
-        <Select native label="Type" className={classes.select}>
-          <option aria-label="" value="Компании" />
-          <option value={10}>Компании</option>
-          <option value={20}>Стартапы</option>
-          <option value={30}>Патенты</option>
+        <Select native label="Type" className={classes.select} defaultValue="all">
+          {/* <option aria-label="Везде" value="all" /> */}
+          <option value={"all"}>Везде</option>
+          <option value={"company"}>По компании</option>
+          <option value={"patents"}>По патентам</option>
+          <option value={"okved"}>По виду деятельности</option>
+          <option value={"block"}>Блочный поиск</option>
         </Select>
       </FormControl>
     </div>

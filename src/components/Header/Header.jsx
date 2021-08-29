@@ -79,7 +79,7 @@ const Header = (props) => {
                     </Button>
                 </div>
 
-                <div
+                {/* <div
                     style={{
                         display: "flex",
                         justifyContent: "center",
@@ -124,7 +124,7 @@ const Header = (props) => {
                         ]}
                     />
                     <MultipleCategory name="Другое" items={[]}/>
-                </div>
+                </div> */}
             </form>
             {props.load ? (
                 <Loader
