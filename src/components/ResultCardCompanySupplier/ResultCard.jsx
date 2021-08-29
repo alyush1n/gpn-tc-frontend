@@ -77,7 +77,7 @@ const ResultCardCompany = (props) => {
         <Button
           size="small"
           className={classes.moreButton}
-          onClick={()=>props.searchSupplierByID(props?.card?.id)}
+          onClick={() => props.searchSupplierByID(props?.card?.id)}
         >
           <MoreHoriz className={classes.horiz} />
         </Button>
@@ -90,14 +90,18 @@ const ResultCardCompany = (props) => {
                         src={props?.card?.logo_urls["90"]}
                     />
                 </div> */}
-        <div className={classes.title}>{props?.card?.name}</div>
+        <div className={classes.title}>
+          <a href={"https://metaprom.ru/companies/"+props?.card?.id} target="_blank">{props?.card?.name}</a>
+        </div>
       </div>
       <div>{props?.card?.city}</div>
       <div>{props?.card?.type}</div>
       <div>{props?.card?.description?.otraslName}</div>
       <div>
-        {props?.card?.description?.baseInfo?.map((d)=>(
-          <div>{d?.name}: {d?.value}</div>
+        {props?.card?.description?.baseInfo?.map((d) => (
+          <div>
+            {d?.name}: {d?.value}
+          </div>
         ))}
       </div>
       {/*<div className={classes.contacts}>*/}

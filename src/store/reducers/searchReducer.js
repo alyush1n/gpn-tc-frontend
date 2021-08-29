@@ -1,4 +1,9 @@
-import { ADD_SEARCH, CLEAR_SEARCH, ERROR_SEARCH, ADD_SUPPLIER_DESCRIPTION } from "../actions/actions";
+import {
+  ADD_SEARCH,
+  CLEAR_SEARCH,
+  ERROR_SEARCH,
+  ADD_SUPPLIER_DESCRIPTION,
+} from "../actions/actions";
 
 const initialState = {
   responses: {
@@ -100,14 +105,20 @@ export const addResponseToStore = (state = initialState, action) => {
       };
     case ADD_SUPPLIER_DESCRIPTION:
       return {
-        ...state,
-        suppliers:state?.responses?.suppliers?.map((supplier)=>{
-          if(supplier?.id == action.payload.id){
-            supplier.description = action.payload.description
-          }
-          return supplier
-        })
-      }
+        // ...state,
+        responses: {
+          ...state.responses,
+          suppliers: state?.responses?.suppliers?.map((supplier) => {
+            if (supplier?.id == action.payload.id) {
+              supplier.description = action.payload.description;
+            }
+            return supplier;
+          }),
+        },
+        // TODO: see it, why it work
+        // it not in response
+        // but data in response modifyed
+      };
     case ERROR_SEARCH:
       return {
         ...state,

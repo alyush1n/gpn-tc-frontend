@@ -3,7 +3,7 @@ import axios from 'axios'
 import { loaded, loading } from "./loading";
 import { ADD_SEARCH, CLEAR_SEARCH, ERROR_SEARCH, ADD_SUPPLIER_DESCRIPTION } from "../actions/actions";
 
-const supplierURL = process.env.REACT_APP_PROMT_API_URL;
+const supplierURL = process.env.REACT_APP_METAPROM_API_URL;
 
 const clearSearch = () => ({
   type: CLEAR_SEARCH,

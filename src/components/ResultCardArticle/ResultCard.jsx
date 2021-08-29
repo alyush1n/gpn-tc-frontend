@@ -95,7 +95,7 @@ const ResultCard = (props) => {
                     <MoreHoriz className={classes.horiz}/>
                 </Button>
             </div>
-            <a className={classes.a} href={props?.card?.link}>
+            <a className={classes.a} href={props?.card?.link} target="_blank">
                 <div className={classes?.logoTitle}>
                     {/* <div>
           <img
