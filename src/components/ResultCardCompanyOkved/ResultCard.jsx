@@ -73,42 +73,27 @@ const ResultCardCompany = (props) => {
   return (
     <div className={classes.cardStyle}>
       <div className={classes.topCard}>
-        <Stat title="Релевантность" data={props?.card?.bench + "%"} />
+        {props?.card?.bench ? (
+          <Stat title="Релевантность" data={props?.card?.bench + "%"} />
+        ) : null}
         <Button
           size="small"
           className={classes.moreButton}
-          onClick={()=>props.searchSupplierByID(props?.card?.id)}
+          // onClick={
+          // props.cardShown(props.index)
+          // }
         >
           <MoreHoriz className={classes.horiz} />
         </Button>
       </div>
       <div className={classes?.logoTitle}>
-        {/* <div>
-                    <img
-                        className={classes.logo}
-                        alt=""
-                        src={props?.card?.logo_urls["90"]}
-                    />
-                </div> */}
         <div className={classes.title}>{props?.card?.name}</div>
       </div>
-      <div>{props?.card?.city}</div>
-      <div>{props?.card?.type}</div>
-      <div>{props?.card?.description?.otraslName}</div>
-      <div>
-        {props?.card?.description?.baseInfo?.map((d)=>(
-          <div>{d?.name}: {d?.value}</div>
-        ))}
-      </div>
-      {/*<div className={classes.contacts}>*/}
-      {/*  /!*{props?.card?.contacts ? props?.card?.contacts?.map((c, index) => (*!/*/}
-      {/*  /!*  <Stat title={c?.type} link={c?.link} data={c?.value} />*!/*/}
-      {/*  /!*)) : null}*!/*/}
-      {/*</div>*/}
-      {/* <div
-                className={classes.description}
-                dangerouslySetInnerHTML={{__html: props.card.description + "...",}}
-            /> */}
+      {props?.card?.other?.map((p) => (
+        <div>
+          {p?.name} {p?.value}
+        </div>
+      ))}
     </div>
   );
 };

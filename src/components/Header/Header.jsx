@@ -48,6 +48,7 @@ const useStyles = makeStyles({
 const Header = (props) => {
     const classes = useStyles();
     const [name, setName] = useState("");
+    const [type, setType] = useState("all");
     return (
         <div className={classes.content}>
             <form className={classes.header} onSubmit={(e) => {
@@ -59,7 +60,7 @@ const Header = (props) => {
                         marginTop: 16,
                     }}
                 >
-                    <Category name="Тип"/>
+                    <Category name="Тип" onSelect={(name)=>{console.log(name);setType(name)}} />
                     <input
                         className={classes.searchInput}
                         type="text"
@@ -72,7 +73,7 @@ const Header = (props) => {
                         className={classes.button}
                         onClick={(e) => {
                             e.preventDefault();
-                            props.searchByName(name, "");
+                            props.searchByName(name, type);
                         }}
                     >
                         <SearchIcon className={classes.searchIcon}/>

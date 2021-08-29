@@ -5,7 +5,9 @@ import ResultCardArticle from "../ResultCardArticle";
 import { makeStyles } from "@material-ui/core/styles";
 import ResultCardCompany from "../ResultCardCompany/ResultCard";
 import ResultCardCompanySupplier from "../ResultCardCompanySupplier";
+import ResultCardCompanyOkved from "../ResultCardCompanyOkved";
 import { Button } from "@material-ui/core";
+import UploadJsonButton from "./UploadJsonButton";
 
 const useStyles = makeStyles({
   card: {
@@ -53,7 +55,8 @@ const ResultSource = (props) => {
       props?.sources?.hhRu?.length > 0 ||
       props?.sources?.habrCareer?.length > 0 ||
       props?.sources?.rospatent?.length > 0 ||
-      props?.sources?.suppliers?.length > 0
+      props?.sources?.suppliers?.length > 0 ||
+      props?.sources?.okved?.length > 0
     )
       isView = true;
     return isView;
@@ -71,7 +74,12 @@ const ResultSource = (props) => {
           Скачать JSON
         </Button>
       ) : null}
-
+      <UploadJsonButton
+        addToStore={(content) => {
+          props?.addToStore(content);
+          // console.log(content)
+        }}
+      />
       <div className={classes.sourceName}>
         {props.sources?.habrCareer?.length > 0 ? "Хабр Карьера" : null}
       </div>
@@ -106,11 +114,28 @@ const ResultSource = (props) => {
         ))}
       </div>
       <div className={classes.sourceName}>
-        {props.sources?.suppliers?.length > 0 ? "База данных поставщиков" : null}
+        {props.sources?.suppliers?.length > 0
+          ? "База данных поставщиков"
+          : null}
       </div>
       <div className={classes.card}>
         {props.sources?.suppliers?.map((c, i) => (
-          <ResultCardCompanySupplier className={classes.card} card={c} index={i} />
+          <ResultCardCompanySupplier
+            className={classes.card}
+            card={c}
+            index={i}
+            searchSupplierByID={(id)=>props.searchSupplierByID(id)}
+          />
+        ))}
+      </div>
+      <div className={classes.sourceName}>
+        {props.sources?.okved?.length > 0
+          ? "База данных компаний по видам деятельности"
+          : null}
+      </div>
+      <div className={classes.card}>
+        {props.sources?.okved?.map((c, i) => (
+          <ResultCardCompanyOkved className={classes.card} card={c} index={i} />
         ))}
       </div>
     </div>
