@@ -6,7 +6,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import {MoreHoriz} from "@material-ui/icons";
 
 const useStyles = makeStyles({
-    card: {
+    cardStyle: {
         width: "312px",
         height: "408px",
         backgroundColor: "white",
@@ -50,7 +50,6 @@ const useStyles = makeStyles({
     },
     logo: {
         height: "24px",
-        width: "24px",
     },
     topCard: {
         display: "flex",
@@ -68,11 +67,11 @@ const useStyles = makeStyles({
     },
 });
 
-const ResultCard = (props) => {
+const ResultCardCompany = (props) => {
     const classes = useStyles();
     console.log(props)
     return (
-        <div className={classes.card}>
+        <div className={classes.cardStyle}>
             <div className={classes.topCard}>
                 <Stat title="Релевантность" data={props?.card?.bench + "%"}/>
                 <Button
@@ -89,34 +88,24 @@ const ResultCard = (props) => {
                 <div>
                     <img
                         className={classes.logo}
-                        alt={props?.card?.name}
-                        src={
-                            props?.card?.logo === null
-                                ? "../static/default-logo.png"
-                                : props.card?.logo
-                        }
+                        alt=""
+                        src={props?.card?.logo_urls["90"]}
                     />
                 </div>
                 <div className={classes.title}>{props?.card?.name}</div>
             </div>
-            <div className={classes.contacts}>
-                {props?.card?.contacts ? props?.card?.contacts?.map((c, index) => (
-                    <Stat title={c?.type} link={c?.link} data={c?.value}/>
-                )) : null}
-            </div>
-            {props.card?.description?.map(
-                (d, index) =>
-                    index < 1 && (
-                        <div
-                            className={classes.description}
-                            dangerouslySetInnerHTML={{
-                                __html: d.slice(0, 144) + "...",
-                            }}
-                        />
-                    )
-            )}
+            {/*<div className={classes.contacts}>*/}
+            {/*  /!*{props?.card?.contacts ? props?.card?.contacts?.map((c, index) => (*!/*/}
+            {/*  /!*  <Stat title={c?.type} link={c?.link} data={c?.value} />*!/*/}
+            {/*  /!*)) : null}*!/*/}
+            {/*</div>*/}
+            <div
+                className={classes.description}
+                dangerouslySetInnerHTML={{__html: props.card.description + "...",}}
+            />
+
         </div>
     );
 };
 
-export default ResultCard;
+export default ResultCardCompany;
